@@ -4,6 +4,7 @@
 
 **Beautiful animated button component for Svelte with slide and arc animations**
 
+[![npm version](https://img.shields.io/npm/v/@chulkovdanila/svelte-uikit.svg)](https://www.npmjs.com/package/@chulkovdanila/svelte-uikit)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Svelte](https://img.shields.io/badge/Svelte-5.x-orange)](https://svelte.dev)
 
@@ -27,55 +28,70 @@ Easy to use, customizable button component with smooth hover animations - inspir
 
 ## 📦 Installation
 
-### Method 1: Copy Component (Recommended - Like shadcn/ui)
-
-This method gives you full control over the component code, just like shadcn/ui. You copy the components directly into your project and can customize them as needed.
-
-1. **Copy the Button component** to your project:
+### Install from npm
 
 ```bash
-# Create components directory in your SvelteKit project
-mkdir -p src/lib/components/ui
-
-# Copy Button component files
-cp -r node_modules/svelte-ui-kit/src/lib/components/Button src/lib/components/ui/
+npm install @chulkovdanila/svelte-uikit
 ```
 
-Or manually copy the following files:
-- `src/lib/components/Button/Button.svelte`
-- `src/lib/components/Button/index.ts`
-
-2. **Copy utility functions**:
+### Install from GitHub
 
 ```bash
-# Copy cn utility
-cp node_modules/svelte-ui-kit/src/lib/utils/cn.ts src/lib/utils/
+npm install github:ChulkovDanila/svelte-ui-kit
 ```
 
-3. **Copy types** (if using TypeScript):
+---
 
-```bash
-# Copy types
-cp node_modules/svelte-ui-kit/src/lib/types/index.ts src/lib/types/
-```
+## 🚀 Quick Start
 
-4. **Install the package** (for types and utilities):
+### Method 1: Direct Import (Recommended)
 
-```bash
-npm install svelte-ui-kit
-```
-
-### Method 2: Direct Import (Standard npm package)
-
-For quick setup without customization, you can import components directly from the package.
-
-```bash
-npm install svelte-ui-kit
-```
+After installation, import components directly:
 
 ```svelte
 <script>
-  import { Button } from 'svelte-ui-kit';
+  import { Button } from '@chulkovdanila/svelte-uikit';
+</script>
+
+<Button>Click me</Button>
+```
+
+### Method 2: Copy Component (Like shadcn/ui)
+
+For full control over component code, copy components directly into your project:
+
+1. **Install the package:**
+
+```bash
+npm install @chulkovdanila/svelte-uikit
+```
+
+2. **Copy Button component:**
+
+```bash
+mkdir -p src/lib/components/ui
+cp -r node_modules/@chulkovdanila/svelte-uikit/src/lib/components/Button src/lib/components/ui/
+```
+
+3. **Copy utilities:**
+
+```bash
+mkdir -p src/lib/utils
+cp node_modules/@chulkovdanila/svelte-uikit/src/lib/utils/cn.ts src/lib/utils/
+```
+
+4. **Copy types (TypeScript):**
+
+```bash
+mkdir -p src/lib/types
+cp node_modules/@chulkovdanila/svelte-uikit/src/lib/types/index.ts src/lib/types/
+```
+
+5. **Import from local:**
+
+```svelte
+<script>
+  import { Button } from '$lib/components/ui/Button';
 </script>
 
 <Button>Click me</Button>
@@ -83,25 +99,21 @@ npm install svelte-ui-kit
 
 ---
 
-## 🚀 Quick Start
+## 📖 Usage Examples
 
 ### Basic Usage
 
 ```svelte
 <script>
-  import { Button } from '$lib/components/ui/Button';
+  import { Button } from '@chulkovdanila/svelte-uikit';
 </script>
 
 <Button>Click me</Button>
 ```
 
-### With Animation Type
+### Animation Types
 
 ```svelte
-<script>
-  import { Button } from '$lib/components/ui/Button';
-</script>
-
 <!-- Slide Animation (horizontal) -->
 <Button animationType="slide">Get Started</Button>
 
@@ -109,25 +121,17 @@ npm install svelte-ui-kit
 <Button animationType="arc">Discover</Button>
 ```
 
-### With Animation Speed
+### Animation Speeds
 
 ```svelte
-<script>
-  import { Button } from '$lib/components/ui/Button';
-</script>
-
-<Button animationSpeed="fast">Fast Animation</Button>
-<Button animationSpeed="medium">Medium Animation</Button>
-<Button animationSpeed="slow">Slow Animation</Button>
+<Button animationSpeed="fast">Fast</Button>
+<Button animationSpeed="medium">Medium</Button>
+<Button animationSpeed="slow">Slow</Button>
 ```
 
 ### Button Variants
 
 ```svelte
-<script>
-  import { Button } from '$lib/components/ui/Button';
-</script>
-
 <Button variant="default">Default</Button>
 <Button variant="outline">Outline</Button>
 <Button variant="destructive">Delete</Button>
@@ -137,20 +141,12 @@ npm install svelte-ui-kit
 ### Rounded Buttons
 
 ```svelte
-<script>
-  import { Button } from '$lib/components/ui/Button';
-</script>
-
 <Button rounded>Rounded Button</Button>
 ```
 
 ### Complete Example
 
 ```svelte
-<script>
-  import { Button } from '$lib/components/ui/Button';
-</script>
-
 <Button 
   animationType="slide" 
   animationSpeed="medium" 
@@ -182,58 +178,22 @@ npm install svelte-ui-kit
 ### Slide Animation
 Horizontal text movement - text slides right on hover, new text slides in from left.
 
-```svelte
-<Button animationType="slide">Click me</Button>
-```
-
 **GitHub Search Keywords**: `slide animation button`, `horizontal animation button`
 
 ### Arc Animation  
 Curved movement with rotation - text moves in a semicircle path with rotation effect.
 
-```svelte
-<Button animationType="arc">Discover</Button>
-```
-
 **GitHub Search Keywords**: `arc animation button`, `curved animation button`
 
 ---
 
-## 🎯 Examples
+## 📚 TypeScript Types
 
-### Different Variants
+```typescript
+import type { ButtonVariant, ButtonAnimationType } from '@chulkovdanila/svelte-uikit';
 
-```svelte
-<div class="button-group">
-  <Button variant="default">Primary</Button>
-  <Button variant="outline">Secondary</Button>
-  <Button variant="destructive">Delete</Button>
-  <Button variant="ghost">Cancel</Button>
-</div>
-```
-
-### Different Speeds
-
-```svelte
-<div class="button-group">
-  <Button animationSpeed="fast">Fast</Button>
-  <Button animationSpeed="medium">Medium</Button>
-  <Button animationSpeed="slow">Slow</Button>
-</div>
-```
-
-### Combined Options
-
-```svelte
-<Button 
-  animationType="arc" 
-  animationSpeed="slow" 
-  variant="outline" 
-  rounded
-  class="my-custom-class"
->
-  Custom Button
-</Button>
+const variant: ButtonVariant = 'outline';
+const animationType: ButtonAnimationType = 'slide';
 ```
 
 ---
@@ -242,7 +202,7 @@ Curved movement with rotation - text moves in a semicircle path with rotation ef
 
 ### Custom Colors
 
-You can customize button colors by modifying the CSS variables or directly editing the component styles:
+You can customize button colors by modifying CSS or using custom classes:
 
 ```svelte
 <Button class="custom-button">Custom</Button>
@@ -261,15 +221,14 @@ You can customize button colors by modifying the CSS variables or directly editi
 
 ---
 
-## 📚 TypeScript Types
+## 📹 Demo Videos
 
-```typescript
-import type { ButtonVariant, ButtonAnimationType } from 'svelte-ui-kit';
+Watch our animated button components in action!
 
-// Use types in your code
-const variant: ButtonVariant = 'outline';
-const animationType: ButtonAnimationType = 'slide';
-```
+- 🎬 **[Slide Animation Showcase](./videoshowcase/Showcase1.mp4)** - Smooth horizontal text movement
+- 🎬 **[Arc Animation Showcase](./videoshowcase/Showcase2.mp4)** - Beautiful curved movement with rotation
+
+See the [SHOWCASE.md](./SHOWCASE.md) document for complete information.
 
 ---
 
@@ -291,21 +250,6 @@ npm run dev
 
 ---
 
-## 📹 Demo Videos
-
-Watch our animated button components in action! See all variants and animations in high quality video demonstrations.
-
-### Watch the Showcases
-
-- 🎬 **[Slide Animation Showcase](./videoshowcase/Showcase1.mp4)** - Smooth horizontal text movement
-- 🎬 **[Arc Animation Showcase](./videoshowcase/Showcase2.mp4)** - Beautiful curved movement with rotation
-
-*Click the links above to watch the videos in your browser.*
-
-**More details:** See the [SHOWCASE.md](./SHOWCASE.md) document for complete information about what's demonstrated in each video.
-
----
-
 ## 📄 License
 
 MIT License - feel free to use in your projects!
@@ -315,6 +259,8 @@ MIT License - feel free to use in your projects!
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
 
 ---
 

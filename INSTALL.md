@@ -7,7 +7,7 @@ This guide shows you how to install components by copying them directly into you
 ### Step 1: Install the Package
 
 ```bash
-npm install svelte-ui-kit
+npm install @chulkovdanila/svelte-uikit
 ```
 
 This gives you access to the components, types, and utilities.
@@ -24,7 +24,7 @@ mkdir -p src/lib/components/ui
 2. **Copy Button component**:
 ```bash
 # Copy the entire Button folder
-cp -r node_modules/svelte-ui-kit/src/lib/components/Button src/lib/components/ui/
+cp -r node_modules/@chulkovdanila/svelte-uikit/src/lib/components/Button src/lib/components/ui/
 
 # Or manually copy:
 # - Button.svelte
@@ -34,13 +34,13 @@ cp -r node_modules/svelte-ui-kit/src/lib/components/Button src/lib/components/ui
 3. **Copy utilities** (if you don't have them):
 ```bash
 mkdir -p src/lib/utils
-cp node_modules/svelte-ui-kit/src/lib/utils/cn.ts src/lib/utils/
+cp node_modules/@chulkovdanila/svelte-uikit/src/lib/utils/cn.ts src/lib/utils/
 ```
 
 4. **Copy types** (optional, for TypeScript):
 ```bash
 mkdir -p src/lib/types
-cp node_modules/svelte-ui-kit/src/lib/types/index.ts src/lib/types/
+cp node_modules/@chulkovdanila/svelte-uikit/src/lib/types/index.ts src/lib/types/
 ```
 
 ### Step 3: Update Imports
@@ -88,7 +88,7 @@ your-project/
 
 To update a component:
 
-1. Check the latest version in `node_modules/svelte-ui-kit`
+1. Check the latest version in `node_modules/@chulkovdanila/svelte-uikit`
 2. Copy the updated files to your project
 3. Test your implementation
 4. Customize as needed
