@@ -1,0 +1,102 @@
+name: Auto-merge Pull Request
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled]
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'PR number to merge'
+        required: true
+        type: string
+
+jobs:
+  auto-merge:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      checks: read
+    
+    steps:
+      - name: Get PR number
+        id: pr_number
+        run: |
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            echo "pr_number=${{ github.event.inputs.pr_number }}" >> $GITHUB_OUTPUT
+          else
+            echo "pr_number=${{ github.event.pull_request.number }}" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Auto-merge PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prNumber = ${{ steps.pr_number.outputs.pr_number }};
+            
+            // Получаем информацию о PR
+            const { data: prData } = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber
+            });
+            
+            console.log(`Checking PR #${prNumber}: ${prData.title}`);
+            
+            // Проверяем, что PR открыт
+            if (prData.state !== 'open') {
+              console.log(`PR #${prNumber} is not open, skipping`);
+              return;
+            }
+            
+            // Проверяем, что нет конфликтов
+            if (prData.mergeable === false) {
+              console.log(`PR #${prNumber} has merge conflicts, skipping auto-merge`);
+              return;
+            }
+            
+            // Проверяем статус коммита (если проверки настроены)
+            try {
+              const { data: status } = await github.rest.repos.getCombinedStatusForRef({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                ref: prData.head.sha
+              });
+              
+              if (status.state === 'failure') {
+                console.log(`PR #${prNumber} has failed checks, skipping auto-merge`);
+                return;
+              }
+            } catch (error) {
+              console.log('Could not check status, proceeding anyway');
+            }
+            
+            // Пытаемся объединить PR
+            try {
+              await github.rest.pulls.merge({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: prNumber,
+                merge_method: 'merge',
+                commit_title: `Merge PR #${prNumber}: ${prData.title}`,
+                commit_message: `Automatically merged PR #${prNumber}\n\n${prData.body || ''}`
+              });
+              
+              console.log(`✅ Successfully merged PR #${prNumber}`);
+              
+              // Удаляем ветку после merge (опционально)
+              try {
+                await github.rest.git.deleteRef({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  ref: `heads/${prData.head.ref}`
+                });
+                console.log(`Deleted branch: ${prData.head.ref}`);
+              } catch (error) {
+                console.log('Could not delete branch:', error.message);
+              }
+            } catch (error) {
+              console.log(`❌ Failed to merge PR #${prNumber}:`, error.message);
+              throw error;
+            }
+
