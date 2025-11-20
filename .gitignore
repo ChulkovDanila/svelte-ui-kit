@@ -45,3 +45,6 @@ coverage/
 /src/routes/+page.svelte
 /src/routes/showcase/
 /src/routes/showcase-arc/
+
+# Include showcase videos
+!videoshowcase/

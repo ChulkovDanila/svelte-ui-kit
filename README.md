@@ -4,7 +4,6 @@
 
 **Beautiful animated button component for Svelte with slide and arc animations**
 
-[![npm version](https://img.shields.io/npm/v/svelte-ui-kit.svg)](https://www.npmjs.com/package/svelte-ui-kit)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Svelte](https://img.shields.io/badge/Svelte-5.x-orange)](https://svelte.dev)
 
@@ -289,6 +288,21 @@ Run development server:
 ```bash
 npm run dev
 ```
+
+---
+
+## 📹 Demo Videos
+
+Watch our animated button components in action! See all variants and animations in high quality video demonstrations.
+
+### Watch the Showcases
+
+- 🎬 **[Slide Animation Showcase](./videoshowcase/Showcase1.mp4)** - Smooth horizontal text movement
+- 🎬 **[Arc Animation Showcase](./videoshowcase/Showcase2.mp4)** - Beautiful curved movement with rotation
+
+*Click the links above to watch the videos in your browser.*
+
+**More details:** See the [SHOWCASE.md](./SHOWCASE.md) document for complete information about what's demonstrated in each video.
 
 ---
 
