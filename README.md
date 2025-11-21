@@ -154,15 +154,21 @@ VerticalSlideButton is a clean, text-only button with vertical letter animation 
 
 ```svelte
 <HorizontalSlideButton variant="default">Default</HorizontalSlideButton>
+<HorizontalSlideButton variant="default-rounded">Default Rounded</HorizontalSlideButton>
 <HorizontalSlideButton variant="outline">Outline</HorizontalSlideButton>
+<HorizontalSlideButton variant="outline-rounded">Outline Rounded</HorizontalSlideButton>
 <HorizontalSlideButton variant="destructive">Delete</HorizontalSlideButton>
+<HorizontalSlideButton variant="destructive-rounded">Delete Rounded</HorizontalSlideButton>
 <HorizontalSlideButton variant="ghost">Cancel</HorizontalSlideButton>
+<HorizontalSlideButton variant="ghost-rounded">Cancel Rounded</HorizontalSlideButton>
 ```
 
 ### Rounded Buttons
 
 ```svelte
-<HorizontalSlideButton rounded>Rounded Button</HorizontalSlideButton>
+<HorizontalSlideButton variant="default-rounded">Rounded Button</HorizontalSlideButton>
+<HorizontalSlideButton variant="outline-rounded">Outline Rounded</HorizontalSlideButton>
+<HorizontalSlideButton variant="destructive-rounded">Destructive Rounded</HorizontalSlideButton>
 ```
 
 ### Complete Examples
@@ -171,8 +177,7 @@ VerticalSlideButton is a clean, text-only button with vertical letter animation 
 <HorizontalSlideButton 
   animationType="slide" 
   animationSpeed="medium" 
-  variant="outline" 
-  rounded
+  variant="outline-rounded"
 >
   Learn More
 </HorizontalSlideButton>
@@ -197,8 +202,7 @@ VerticalSlideButton is a clean, text-only button with vertical letter animation 
 |------|------|---------|-------------|
 | `animationType` | `'slide' \| 'arc'` | `'slide'` | Animation type: slide (horizontal) or arc (curved) |
 | `animationSpeed` | `'fast' \| 'medium' \| 'slow'` | `'fast'` | Animation speed: fast (1s), medium (2s), or slow (3s) |
-| `variant` | `'default' \| 'outline' \| 'destructive' \| 'ghost'` | `'default'` | Button style variant |
-| `rounded` | `boolean` | `false` | Fully rounded button corners |
+| `variant` | `'default' \| 'default-rounded' \| 'outline' \| 'outline-rounded' \| 'destructive' \| 'destructive-rounded' \| 'ghost' \| 'ghost-rounded'` | `'default'` | Button style variant with optional rounded corners |
 | `disabled` | `boolean` | `false` | Disable button interactions |
 | `type` | `'button' \| 'submit' \| 'reset'` | `'button'` | HTML button type |
 | `class` | `string` | `''` | Additional CSS classes |

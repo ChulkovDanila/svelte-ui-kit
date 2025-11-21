@@ -6,8 +6,7 @@
 		type?: 'button' | 'submit' | 'reset';
 		animationSpeed?: 'fast' | 'medium' | 'slow';
 		animationType?: 'slide' | 'arc';
-		variant?: 'default' | 'outline' | 'destructive' | 'ghost';
-		rounded?: boolean;
+		variant?: 'default' | 'default-rounded' | 'outline' | 'outline-rounded' | 'destructive' | 'destructive-rounded' | 'ghost' | 'ghost-rounded';
 		class?: string;
 		[key: string]: unknown;
 	}
@@ -18,10 +17,12 @@
 		animationSpeed = 'fast',
 		animationType = 'slide',
 		variant = 'default',
-		rounded = false,
 		class: className = '',
 		...rest
 	}: Props = $props();
+
+	const isRounded = variant.includes('-rounded');
+	const baseVariant = variant.replace('-rounded', '') as 'default' | 'outline' | 'destructive' | 'ghost';
 
 	const buttonHeight = 4;
 	const fontSizeRatio = 0.35;
@@ -108,7 +109,7 @@
 
 <button
 	type={type}
-	class="button variant-{variant} {rounded ? 'rounded' : ''} {className}"
+	class="button variant-{baseVariant} {isRounded ? 'rounded' : ''} {className}"
 	bind:this={buttonElement}
 	{disabled}
 	{...rest}

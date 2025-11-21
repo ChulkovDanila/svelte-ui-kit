@@ -79,5 +79,8 @@
 	},
 	"peerDependencies": {
 		"svelte": "^5.0.0"
+	},
+	"dependencies": {
+		"@chulkovdanila/svelte-uikit": "^0.0.2"
 	}
 }
