@@ -1,8 +1,8 @@
 {
 	"name": "@chulkovdanila/svelte-uikit",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"type": "module",
-	"description": "Beautiful animated button component for Svelte with slide and arc animations. Easy to use, customizable, and similar to shadcn/ui style.",
+	"description": "Beautiful animated button components for Svelte with slide, arc, and vertical text animations. Easy to use, customizable, and similar to shadcn/ui style.",
 	"keywords": [
 		"svelte",
 		"sveltekit",

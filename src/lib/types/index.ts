@@ -1,1 +1,1 @@
-export * from '../components/Button/types';
+export * from '../components/HorizontalSlideButton/types';

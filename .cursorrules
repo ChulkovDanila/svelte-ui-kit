@@ -1,0 +1,2 @@
+NEVER write comments in code. Code should be self-explanatory through clear naming and structure. Remove all existing comments from the codebase.
+

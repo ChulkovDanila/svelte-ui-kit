@@ -16,13 +16,14 @@ Easy to use, customizable button component with smooth hover animations - inspir
 
 ## ✨ Features
 
-- 🎨 **Two Animation Types**: Slide (horizontal) and Arc (curved) animations
-- ⚡ **Three Speed Options**: Fast, Medium, and Slow animations
-- 🎯 **Multiple Variants**: Default, Outline, Destructive, and Ghost styles
+- 🎨 **Two Button Components**: HorizontalSlideButton with slide/arc animations and VerticalSlideButton with vertical letter animation
+- ⚡ **Three Speed Options**: Fast (1s), Medium (2s), and Slow (3s) animations
+- 🎯 **Multiple Variants**: Default, Outline, Destructive, and Ghost styles for HorizontalSlideButton
+- 🎭 **VerticalSlideButton**: Clean text-only button with customizable colors, sizes, and smooth vertical letter animations
 - 📦 **Easy Installation**: Copy components directly into your project (like shadcn/ui)
-- 🔧 **Fully Customizable**: Modify colors, sizes, and animations to fit your design
+- 🔧 **Fully Customizable**: Modify colors, sizes, fonts, and animations to fit your design
 - 💪 **TypeScript Support**: Full type safety out of the box
-- 🎭 **No Dependencies**: Pure Svelte component, no external dependencies
+- 🚫 **No Dependencies**: Pure Svelte components, no external dependencies
 
 ---
 
@@ -50,10 +51,11 @@ After installation, import components directly:
 
 ```svelte
 <script>
-  import { Button } from '@chulkovdanila/svelte-uikit';
+  import { HorizontalSlideButton, VerticalSlideButton } from '@chulkovdanila/svelte-uikit';
 </script>
 
-<Button>Click me</Button>
+<HorizontalSlideButton>Click me</HorizontalSlideButton>
+<VerticalSlideButton>Hover me</VerticalSlideButton>
 ```
 
 ### Method 2: Copy Component (Like shadcn/ui)
@@ -66,11 +68,12 @@ For full control over component code, copy components directly into your project
 npm install @chulkovdanila/svelte-uikit
 ```
 
-2. **Copy Button component:**
+2. **Copy components:**
 
 ```bash
 mkdir -p src/lib/components/ui
-cp -r node_modules/@chulkovdanila/svelte-uikit/src/lib/components/Button src/lib/components/ui/
+cp -r node_modules/@chulkovdanila/svelte-uikit/src/lib/components/HorizontalSlideButton src/lib/components/ui/
+cp -r node_modules/@chulkovdanila/svelte-uikit/src/lib/components/VerticalSlideButton src/lib/components/ui/
 ```
 
 3. **Copy utilities:**
@@ -91,10 +94,12 @@ cp node_modules/@chulkovdanila/svelte-uikit/src/lib/types/index.ts src/lib/types
 
 ```svelte
 <script>
-  import { Button } from '$lib/components/ui/Button';
+  import { HorizontalSlideButton } from '$lib/components/ui/HorizontalSlideButton';
+  import { VerticalSlideButton } from '$lib/components/ui/VerticalSlideButton';
 </script>
 
-<Button>Click me</Button>
+<HorizontalSlideButton>Click me</HorizontalSlideButton>
+<VerticalSlideButton>Hover me</VerticalSlideButton>
 ```
 
 ---
@@ -105,68 +110,109 @@ cp node_modules/@chulkovdanila/svelte-uikit/src/lib/types/index.ts src/lib/types
 
 ```svelte
 <script>
-  import { Button } from '@chulkovdanila/svelte-uikit';
+  import { HorizontalSlideButton, VerticalSlideButton } from '@chulkovdanila/svelte-uikit';
 </script>
 
-<Button>Click me</Button>
+<HorizontalSlideButton>Click me</HorizontalSlideButton>
+<VerticalSlideButton>Hover me</VerticalSlideButton>
+```
+
+### VerticalSlideButton Component
+
+VerticalSlideButton is a clean, text-only button with vertical letter animation on hover:
+
+```svelte
+<VerticalSlideButton 
+  color="#000000" 
+  hoverColor="#666666" 
+  fontSize="2rem"
+  animationSpeed="medium"
+>
+  Click me
+</VerticalSlideButton>
 ```
 
 ### Animation Types
 
 ```svelte
 <!-- Slide Animation (horizontal) -->
-<Button animationType="slide">Get Started</Button>
+<HorizontalSlideButton animationType="slide">Get Started</HorizontalSlideButton>
 
 <!-- Arc Animation (curved) -->
-<Button animationType="arc">Discover</Button>
+<HorizontalSlideButton animationType="arc">Discover</HorizontalSlideButton>
 ```
 
 ### Animation Speeds
 
 ```svelte
-<Button animationSpeed="fast">Fast</Button>
-<Button animationSpeed="medium">Medium</Button>
-<Button animationSpeed="slow">Slow</Button>
+<HorizontalSlideButton animationSpeed="fast">Fast</HorizontalSlideButton>
+<HorizontalSlideButton animationSpeed="medium">Medium</HorizontalSlideButton>
+<HorizontalSlideButton animationSpeed="slow">Slow</HorizontalSlideButton>
 ```
 
-### Button Variants
+### HorizontalSlideButton Variants
 
 ```svelte
-<Button variant="default">Default</Button>
-<Button variant="outline">Outline</Button>
-<Button variant="destructive">Delete</Button>
-<Button variant="ghost">Cancel</Button>
+<HorizontalSlideButton variant="default">Default</HorizontalSlideButton>
+<HorizontalSlideButton variant="outline">Outline</HorizontalSlideButton>
+<HorizontalSlideButton variant="destructive">Delete</HorizontalSlideButton>
+<HorizontalSlideButton variant="ghost">Cancel</HorizontalSlideButton>
 ```
 
 ### Rounded Buttons
 
 ```svelte
-<Button rounded>Rounded Button</Button>
+<HorizontalSlideButton rounded>Rounded Button</HorizontalSlideButton>
 ```
 
-### Complete Example
+### Complete Examples
 
 ```svelte
-<Button 
+<HorizontalSlideButton 
   animationType="slide" 
   animationSpeed="medium" 
   variant="outline" 
   rounded
 >
   Learn More
-</Button>
+</HorizontalSlideButton>
+
+<VerticalSlideButton 
+  color="#ff0000" 
+  hoverColor="#cc0000" 
+  fontSize="1.5rem"
+  animationSpeed="slow"
+>
+  Hover Me
+</VerticalSlideButton>
 ```
 
 ---
 
 ## 📖 Props
 
+### HorizontalSlideButton Component
+
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `animationType` | `'slide' \| 'arc'` | `'slide'` | Animation type: slide (horizontal) or arc (curved) |
-| `animationSpeed` | `'fast' \| 'medium' \| 'slow'` | `'fast'` | Animation speed: fast (0.4s), medium (0.7s), or slow (1.2s) |
+| `animationSpeed` | `'fast' \| 'medium' \| 'slow'` | `'fast'` | Animation speed: fast (1s), medium (2s), or slow (3s) |
 | `variant` | `'default' \| 'outline' \| 'destructive' \| 'ghost'` | `'default'` | Button style variant |
 | `rounded` | `boolean` | `false` | Fully rounded button corners |
+| `disabled` | `boolean` | `false` | Disable button interactions |
+| `type` | `'button' \| 'submit' \| 'reset'` | `'button'` | HTML button type |
+| `class` | `string` | `''` | Additional CSS classes |
+
+### VerticalSlideButton Component
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `animationSpeed` | `'fast' \| 'medium' \| 'slow'` | `'fast'` | Animation speed: fast (1s), medium (2s), or slow (3s) |
+| `color` | `string` | `'#000000'` | Text color |
+| `hoverColor` | `string` | `'#666666'` | Text color on hover |
+| `disabledColor` | `string` | `'#999999'` | Text color when disabled |
+| `fontSize` | `string` | `'2rem'` | Font size |
+| `fontWeight` | `number \| string` | `700` | Font weight |
 | `disabled` | `boolean` | `false` | Disable button interactions |
 | `type` | `'button' \| 'submit' \| 'reset'` | `'button'` | HTML button type |
 | `class` | `string` | `''` | Additional CSS classes |
@@ -196,6 +242,8 @@ const variant: ButtonVariant = 'outline';
 const animationType: ButtonAnimationType = 'slide';
 ```
 
+Available types are exported from `HorizontalSlideButton/types`.
+
 ---
 
 ## 🔧 Customization
@@ -205,7 +253,7 @@ const animationType: ButtonAnimationType = 'slide';
 You can customize button colors by modifying CSS or using custom classes:
 
 ```svelte
-<Button class="custom-button">Custom</Button>
+<HorizontalSlideButton class="custom-button">Custom</HorizontalSlideButton>
 
 <style>
   :global(.custom-button) {
@@ -217,6 +265,18 @@ You can customize button colors by modifying CSS or using custom classes:
     background-color: #your-hover-color;
   }
 </style>
+```
+
+For VerticalSlideButton, use props:
+
+```svelte
+<VerticalSlideButton 
+  color="#your-color" 
+  hoverColor="#your-hover-color"
+  disabledColor="#your-disabled-color"
+>
+  Custom Colors
+</VerticalSlideButton>
 ```
 
 ---
